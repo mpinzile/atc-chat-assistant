@@ -155,7 +155,7 @@ function scrollToBottom() {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
-               'Authorization': 'Bearer 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', // Replace with your OpenAI API key
+               'Authorization': 'Bearer {key}', // Replace with your OpenAI API key
             },
             body: JSON.stringify({
                model: 'gpt-3.5-turbo-16k',
