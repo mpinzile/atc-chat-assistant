@@ -1,0 +1,271 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+
+.page-title {
+  text-align: center;
+  padding: 20px;
+  background-color: #183850;
+  color: #0AD5C1;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.chat-thread {
+  margin: 24px auto 0 auto;
+  padding: 0 20px 0 0;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chat-thread li {
+  position: relative;
+  clear: both;
+  display: inline-block;
+  padding: 16px 40px 16px 20px;
+  margin: 0 0 20px 0;
+  font: 16px/20px 'Noto Sans', sans-serif;
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+
+/* Chat - Avatar */
+.chat-thread li:before {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  content: '';
+}
+
+/* Chat - Speech Bubble Arrow */
+.chat-thread li:after {
+  position: absolute;
+  top: 15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 15px solid rgba(25, 147, 147, 0.2);
+}
+
+.chat-thread .user {
+  animation: show-chat-odd 0.15s 1 ease-in;
+  -moz-animation: show-chat-odd 0.15s 1 ease-in;
+  -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+  float: right;
+  margin-right: 80px;
+  color: #0AD5C1;
+}
+
+.chat-thread .user:before {
+  right: -75px;
+  /* Placeholder avatar 1 */
+  background-image: url("user.png");
+  background-size: cover;
+}
+
+.chat-thread .user:after {
+  border-right: 15px solid transparent;
+  right: -15px;
+}
+
+.chat-thread .bot {
+  animation: show-chat-even 0.15s 1 ease-in;
+  -moz-animation: show-chat-even 0.15s 1 ease-in;
+  -webkit-animation: show-chat-even 0.15s 1 ease-in;
+  float: left;
+  margin-left: 80px;
+  color: #fff;
+}
+
+.chat-thread .bot:before {
+  left: -75px;
+  /* Placeholder avatar 2 */
+  background-image: url("atc-logo.png");
+  background-size: cover;
+}
+
+.chat-thread .bot:after {
+  border-left: 15px solid transparent;
+  left: -15px;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 18px;
+}
+
+.input-container {
+  display: flex;
+}
+
+.chat-window-message {
+  flex: 1;
+  height: 40px; /* Adjusted height for both screens */
+  font: 24px/40px 'Noto Sans', sans-serif; /* Adjusted font size for both screens */
+  background: none;
+  color: #0AD5C1;
+  border: 0;
+  border-bottom: 1px solid rgba(25, 147, 147, 0.2);
+  outline: none;
+}
+
+.send-button {
+  background-color: #0AD5C1;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px; /* Adjusted padding for both screens */
+  font-size: 14px; /* Adjusted font size for both screens */
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.send-button:hover {
+  background-color: #088e8a;
+}
+
+/* A tiny bit responsive... */
+/* -------------------------------------- */
+/* Small screens */
+@media all and (max-width: 767px) {
+  .chat-thread {
+    max-height: 350px; /* Set a fixed height for mobile devices */
+    overflow-y: scroll;
+  }
+
+  .chat-thread li {
+    padding: 16px 20px; /* Adjusted padding for responsiveness */
+  }
+
+  .chat-window {
+    left: 5%;
+    width: 90%;
+  }
+
+  /* some fix for mobile devices responsiveness */
+  .input-container {
+    flex-direction: column;
+  }
+
+  .chat-window-message {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .send-button {
+    margin-left: 0; /* Remove the left margin */
+  }
+
+  .page-title {
+  font-size: 16px;
+}
+}
+
+
+/* Medium and large screens */
+@media all and (min-width: 768px) {
+  .chat-thread {
+    width: 50%;
+    height: 320px;
+  }
+
+  .chat-window {
+    left: 25%;
+    width: 50%;
+  }
+}
+
+
+@media all and (max-width: 767px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  .chat-window-message {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .send-button {
+    margin-left: 0; /* Remove the left margin */
+  }
+}
+
+/* Animation */
+/* -------------------------------------- */
+@keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-moz-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-webkit-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-moz-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-webkit-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
